@@ -14,62 +14,6 @@ body {
     min-height: 100vh; 
     overflow: hidden; 
     padding: 10px;
-    position: relative;
-}
-
-/* Flying Hearts Animation */
-.hearts-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.heart {
-    position: absolute;
-    bottom: -50px;
-    font-size: 30px;
-    opacity: 0.7;
-    animation: float-up 8s infinite ease-in;
-}
-
-.heart:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 25px; }
-.heart:nth-child(2) { left: 15%; animation-delay: 1s; font-size: 35px; }
-.heart:nth-child(3) { left: 25%; animation-delay: 2s; font-size: 28px; }
-.heart:nth-child(4) { left: 35%; animation-delay: 0.5s; font-size: 32px; }
-.heart:nth-child(5) { left: 45%; animation-delay: 1.5s; font-size: 27px; }
-.heart:nth-child(6) { left: 55%; animation-delay: 2.5s; font-size: 30px; }
-.heart:nth-child(7) { left: 65%; animation-delay: 0.8s; font-size: 33px; }
-.heart:nth-child(8) { left: 75%; animation-delay: 1.8s; font-size: 26px; }
-.heart:nth-child(9) { left: 85%; animation-delay: 2.2s; font-size: 29px; }
-.heart:nth-child(10) { left: 95%; animation-delay: 1.2s; font-size: 31px; }
-.heart:nth-child(11) { left: 10%; animation-delay: 3s; font-size: 28px; }
-.heart:nth-child(12) { left: 30%; animation-delay: 3.5s; font-size: 34px; }
-.heart:nth-child(13) { left: 50%; animation-delay: 4s; font-size: 27px; }
-.heart:nth-child(14) { left: 70%; animation-delay: 4.5s; font-size: 30px; }
-.heart:nth-child(15) { left: 90%; animation-delay: 5s; font-size: 32px; }
-
-@keyframes float-up {
-    0% {
-        bottom: -50px;
-        opacity: 0;
-        transform: translateX(0) rotate(0deg);
-    }
-    10% {
-        opacity: 0.7;
-    }
-    90% {
-        opacity: 0.7;
-    }
-    100% {
-        bottom: 110%;
-        opacity: 0;
-        transform: translateX(100px) rotate(360deg);
-    }
 }
 
 .container { 
@@ -81,8 +25,6 @@ body {
     width: 90%; 
     max-width: 450px; 
     border: 4px solid #F8BBD0;
-    position: relative;
-    z-index: 10;
 }
 
 .hidden { 
@@ -90,7 +32,7 @@ body {
 }
 
 .bear-gif { 
-    width: 200px; 
+    width: 180px; 
     max-width: 90%;
     height: auto; 
     margin-bottom: 20px; 
@@ -117,8 +59,6 @@ h1 {
     margin: 10px;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
-    position: relative;
-    z-index: 100;
 }
 
 .btn-main:hover { 
@@ -219,7 +159,7 @@ h1 {
     }
     
     .bear-gif {
-        width: 160px;
+        width: 150px;
     }
     
     .type-text {
@@ -240,15 +180,6 @@ h1 {
         padding: 16px 32px;
         font-size: 1.1rem;
     }
-    
-    .heart {
-        font-size: 20px;
-    }
-    
-    .heart:nth-child(2) { font-size: 25px; }
-    .heart:nth-child(4) { font-size: 22px; }
-    .heart:nth-child(7) { font-size: 23px; }
-    .heart:nth-child(12) { font-size: 24px; }
 }
 
 @media (max-width: 360px) {
@@ -266,6 +197,6 @@ h1 {
     }
     
     .bear-gif {
-        width: 140px;
+        width: 130px;
     }
 }
