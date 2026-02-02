@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>For Sadiya ❤️</title>
+  <meta charset="UTF-8" />
+  <title>For Sadiya ❤️</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="hearts"></div>
+  <!-- Floating hearts background -->
+  <div class="hearts"></div>
 
-    <audio id="bgMusic" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2023/02/28/audio_9b52c2f6df.mp3" type="audio/mpeg">
-    </audio>
+  <!-- Background music -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_9b52c2f6df.mp3" type="audio/mpeg">
+  </audio>
 
-    <!-- PAGE 1 -->
-    <div id="main-card" class="container">
-        <img
-          src="https://media.tenor.com/q3E5rZzYz5MAAAAC/milk-and-mocha-bear-love.gif"
-          class="bear-gif"
-          alt="Milk and Mocha cute">
+  <!-- PAGE 1 -->
+  <div id="main-card" class="container">
+    <img
+      src="https://media.tenor.com/q3E5rZzYz5MAAAAC/milk-and-mocha-bear-love.gif"
+      class="bear-gif"
+      alt="Milk and Mocha Bear">
 
-        <h1>Sadiya, will you be my Valentine? 💕</h1>
+    <h1>Sadiya, will you be my Valentine? 💕</h1>
 
-        <div class="buttons">
-            <button id="yesBtn" onclick="celebrate()">Yes 💖</button>
-            <button id="noBtn">No 🙈</button>
-        </div>
+    <div class="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 🙈</button>
     </div>
+  </div>
 
-    <!-- PAGE 2 -->
-    <div id="celebration" class="container hidden">
-        <img
-          src="https://media.tenor.com/1Q8Z6JcQxqYAAAAC/milk-and-mocha-bear-hug.gif"
-          class="bear-gif"
-          alt="Milk and Mocha hug">
+  <!-- PAGE 2 -->
+  <div id="celebration" class="container hidden">
+    <img
+      src="https://media.tenor.com/1Q8Z6JcQxqYAAAAC/milk-and-mocha-bear-hug.gif"
+      class="bear-gif"
+      alt="Milk and Mocha Hug">
 
-        <p id="typeText" class="type-text"></p>
-    </div>
+    <p id="typeText" class="type-text"></p>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
-</
+</html>
