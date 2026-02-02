@@ -3,47 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <title>For Sadiya ❤️</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
+  <!-- Flying Hearts Background -->
+  <div class="hearts-container">
+    <div class="heart">❤️</div>
+    <div class="heart">💕</div>
+    <div class="heart">💖</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💕</div>
+    <div class="heart">💖</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💕</div>
+    <div class="heart">💖</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
+  </div>
 
-  <!-- Floating hearts background -->
-  <div class="hearts"></div>
-
-  <!-- Jazzy romantic background music -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_2c4b8c7c6c.mp3" type="audio/mpeg">
+  <div id="start-overlay">
+    <button onclick="initApp()">Open Sadiya's Gift 🎁</button>
+  </div>
+  
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/audio/2024/08/06/audio_00d461d58c.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- PAGE 1 -->
-  <div id="main-card" class="container">
-    <img
-      src="https://media.tenor.com/zGm5acSjHCIAAAAC/love-bear.gif"
-      class="bear-gif"
-      alt="Cute romantic bear">
-
-    <h1>Sadiya, will you be my Valentine? 💕</h1>
-
-    <div class="buttons">
-      <button id="yesBtn">Yes 💖</button>
-      <button id="noBtn">No 🙈</button>
-    </div>
-  </div>
-
-  <!-- PAGE 2 -->
-  <div id="celebration" class="container hidden">
-    <img
-      src="https://media.tenor.com/7aJ6xG0wAwkAAAAC/bear-hug-love.gif"
-      class="bear-gif"
-      alt="Happy bear hug">
-
-    <p id="typeText" class="type-text"></p>
-  </div>
-
-  <script src="script.js" defer></script>
-</body>
-</html>
+  <div id="main-card" class="contai
