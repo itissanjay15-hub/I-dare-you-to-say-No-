@@ -1,76 +1,119 @@
-const noBtn = document.getElementById('noBtn');
-const yesBtn = document.getElementById('yesBtn');
-const music = document.getElementById('bgMusic');
-const hearts = document.querySelector('.hearts');
-
-const phrases = ["Really?", "Why though? 🥺", "You sure?", "Pretty please!", "Think again!", "Sadiya ❤️"];
-let i = 0;
-
-/* Hearts */
-setInterval(() => {
-    const h = document.createElement('div');
-    h.className = 'heart';
-    h.style.left = Math.random() * 100 + 'vw';
-    h.style.animationDuration = (4 + Math.random() * 4) + 's';
-    hearts.appendChild(h);
-    setTimeout(() => h.remove(), 8000);
-}, 400);
-
-/* No button */
-function moveNo() {
-    music.play();
-    if (navigator.vibrate) navigator.vibrate(40);
-
-    let x, y, ok;
-    const yes = yesBtn.getBoundingClientRect();
-
-    do {
-        x = Math.random() * (innerWidth - noBtn.offsetWidth);
-        y = Math.random() * (innerHeight - noBtn.offsetHeight);
-
-        ok = x + noBtn.offsetWidth < yes.left - 20 ||
-             x > yes.right + 20 ||
-             y + noBtn.offsetHeight < yes.top - 20 ||
-             y > yes.bottom + 20;
-    } while (!ok);
-
-    noBtn.style.position = 'fixed';
-    noBtn.style.left = x + 'px';
-    noBtn.style.top = y + 'px';
-    noBtn.innerText = phrases[i++ % phrases.length];
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
-noBtn.addEventListener('mouseenter', moveNo);
-noBtn.addEventListener('touchstart', moveNo);
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffe6ee;
+    overflow: hidden;
+}
 
-/* Celebrate */
-function celebrate() {
-    music.play();
-    if (navigator.vibrate) navigator.vibrate([60,40,60]);
+/* Card */
+.container {
+    background: white;
+    padding: 26px 22px 32px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 380px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+    animation: popIn 0.6s ease;
+}
 
-    document.getElementById('main-card').classList.add('hidden');
-    document.getElementById('celebration').classList.remove('hidden');
+.hidden {
+    display: none;
+}
 
-    const text = [
-        "I didn’t want to rush this…\n",
-        "I just wanted to be sure.\n\n",
-        "It’s you. Always. ❤️"
-    ];
+.bear-gif {
+    width: 160px;
+    margin-bottom: 18px;
+}
 
-    const el = document.getElementById('typeText');
-    let l = 0, c = 0;
-    el.innerText = "";
+h1 {
+    font-size: 1.4rem;
+    margin-bottom: 22px;
+    color: #333;
+}
 
-    function type() {
-        if (l >= text.length) return;
-        if (c < text[l].length) {
-            el.innerText += text[l][c++];
-            setTimeout(type, 45);
-        } else {
-            l++; c = 0;
-            setTimeout(type, 700);
-        }
-    }
+.type-text {
+    font-size: 1.15rem;
+    color: #444;
+    line-height: 1.7;
+    white-space: pre-line;
+}
 
-    setTimeout(type, 800);
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+button {
+    padding: 10px 26px;
+    border: none;
+    border-radius: 999px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+#yesBtn {
+    background: #ff5c8a;
+    color: white;
+}
+
+#yesBtn:hover {
+    transform: scale(1.08);
+}
+
+#noBtn {
+    background: #e0e0e0;
+}
+
+/* Animations */
+@keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Floating hearts */
+.hearts {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -20px;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 92, 138, 0.25);
+    transform: rotate(45deg);
+    animation: floatUp linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart::before { top: -7px; }
+.heart::after { left: -7px; }
+
+@keyframes floatUp {
+    from { transform: translateY(0) rotate(45deg); opacity: 1; }
+    to { transform: translateY(-120vh) rotate(45deg); opacity: 0; }
 }
