@@ -12,10 +12,10 @@ function startMusic() {
   }
 }
 
+// Start music on first click anywhere
 document.addEventListener("click", startMusic, { once: true });
-document.addEventListener("touchstart", startMusic, { once: true });
 
-/* Floating hearts background */
+/* Floating hearts */
 setInterval(() => {
   const h = document.createElement("div");
   h.className = "heart";
@@ -37,7 +37,7 @@ const phrases = [
 let i = 0;
 
 function moveNo() {
-  startMusic(); // Starts Cupid as soon as she tries to click No
+  startMusic(); 
   const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
   const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
@@ -48,36 +48,26 @@ function moveNo() {
 }
 
 noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
 
-/* Yes button logic with fixed spacing */
+/* Yes button logic with fixed word spacing */
 yesBtn.addEventListener("click", () => {
   document.getElementById("main-card").classList.add("hidden");
   document.getElementById("celebration").classList.remove("hidden");
 
-  // Added extra line breaks for better spacing
-  const lines = [
-    "I didn’t want to rush this...",
-    "\n\n", 
-    "I just wanted to be sure.",
-    "\n\n",
-    "It’s you. Always. ❤️"
-  ];
-
+  // One long string ensures the spaces between words are handled correctly
+  const fullText = "I didn’t want to rush this...\n\nI just wanted to be sure.\n\nIt’s you. Always. ❤️";
   const el = document.getElementById("typeText");
   el.innerText = "";
-  let line = 0, char = 0;
+  
+  let index = 0;
 
   function type() {
-    if (line >= lines.length) return;
-    if (char < lines[line].length) {
-      el.innerText += lines[line][char++];
-      setTimeout(type, 50);
-    } else {
-      line++;
-      char = 0;
-      setTimeout(type, 500);
+    if (index < fullText.length) {
+      el.innerText += fullText.charAt(index);
+      index++;
+      setTimeout(type, 60); 
     }
   }
-  setTimeout(type, 600);
+
+  setTimeout(type, 500);
 });
