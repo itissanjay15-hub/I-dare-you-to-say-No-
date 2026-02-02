@@ -1,42 +1,29 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; font-weight: bold; }
 
-body { background: #ffe6ee; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+body { background: #FCE4EC; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
 
-.container { background: white; padding: 40px; border-radius: 30px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.1); width: 90%; max-width: 450px; }
+.container { background: white; padding: 40px; border-radius: 30px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.05); width: 90%; max-width: 450px; border: 4px solid #F8BBD0; }
 
-/* Buttons: Baby Pink, Bigger, and Equal Size */
-.btn-main {
-    background-color: #f8bbd0; /* Baby Pink */
-    color: #ad1457;
-    border: none;
-    padding: 20px 40px;
-    font-size: 1.4rem;
-    border-radius: 20px;
-    cursor: pointer;
-    min-width: 150px;
-    transition: 0.3s;
-}
+.hidden { display: none; }
 
-#yesBtn:hover { transform: scale(1.1); background-color: #f48fb1; }
+.bear-gif { width: 160px; margin-bottom: 20px; border-radius: 15px; }
 
-/* Second Page Themes */
-.celebration-theme { background: #ad1457 !important; } /* Contrast Dark Pink Background */
+h1 { color: #F06292; font-size: 1.4rem; margin-bottom: 25px; }
 
-.celebration-theme .type-text {
-    color: #f8bbd0 !important; /* Baby Pink Bold Text */
-    font-size: 1.3rem;
-    white-space: pre-wrap;
-    margin: 20px 0;
-}
+/* Buttons: Baby Pink Style */
+.btn-main { background-color: #F8BBD0; color: #D81B60; border: none; padding: 15px 35px; font-size: 1.2rem; border-radius: 50px; cursor: pointer; min-width: 130px; transition: 0.3s; margin: 10px; }
+.btn-main:hover { transform: scale(1.1); background-color: #F48FB1; }
 
-.celebration-theme h1, .celebration-theme p { color: #f8bbd0; }
+/* Page 2 Specifics */
+.page-two { border-color: #F48FB1; }
+.type-text { color: #F06292; font-size: 1.2rem; white-space: pre-wrap; margin-bottom: 20px; line-height: 1.6; }
 
-.love-meter { margin-top: 20px; }
-.meter-bar { background: #fce4ec; border-radius: 10px; height: 25px; width: 100%; border: 2px solid #f8bbd0; overflow: hidden; }
-.fill { background: #f8bbd0; height: 100%; width: 0%; animation: fillUp 4s forwards; }
-@keyframes fillUp { to { width: 100%; } }
+.aesthetic-meter { margin: 20px 0; color: #F06292; }
+.heart-row { font-size: 1.5rem; letter-spacing: 5px; animation: glow 1.5s infinite alternate; }
 
-#timer-display { background: #f8bbd0; color: #ad1457; padding: 10px; border-radius: 10px; margin-top: 10px; display: inline-block; }
+@keyframes glow { from { opacity: 0.5; } to { opacity: 1; } }
 
-#start-overlay { position: fixed; inset: 0; background: #ffe6ee; z-index: 1000; display: flex; justify-content: center; align-items: center; }
-#start-overlay button { padding: 25px 50px; font-size: 1.5rem; background: #f8bbd0; color: #ad1457; border: none; border-radius: 50px; cursor: pointer; }
+#timer-display { background: #F8BBD0; color: #D81B60; padding: 10px 20px; border-radius: 15px; margin-top: 10px; display: inline-block; font-size: 1.3rem; }
+
+#start-overlay { position: fixed; inset: 0; background: #FCE4EC; z-index: 1000; display: flex; justify-content: center; align-items: center; }
+#start-overlay button { padding: 20px 40px; font-size: 1.3rem; background: #F8BBD0; color: #D81B60; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
