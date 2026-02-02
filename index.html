@@ -5,10 +5,11 @@
   <title>For Sadiya ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
   <div id="start-overlay">
-    <button onclick="initApp()">Click to Open Sadiya's Gift 🎁</button>
+    <button onclick="initApp()">Open Sadiya's Gift 🎁</button>
   </div>
 
   <div class="hearts"></div>
@@ -18,21 +19,21 @@
   </audio>
 
   <div id="main-card" class="container hidden">
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ4ZjR4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v6aOebdcl8chfVQCp2/giphy.gif" class="bear-gif">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ4ZjR4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/K67v3j9DQX7A0/giphy.gif" class="bear-gif">
     <h1>Sadiya, will you be my Valentine? 💕</h1>
     <div class="buttons">
-      <button id="yesBtn" class="btn-main">Yes 💖</button>
+      <button id="yesBtn" class="btn-main" onclick="celebrate()">Yes 💖</button>
       <button id="noBtn" class="btn-main">No 🙈</button>
     </div>
   </div>
 
-  <div id="celebration" class="container hidden celebration-theme">
+  <div id="celebration-page" class="container hidden page-two">
     <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ4ZjR4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/iZ68D0zX7f00vIAtgK/giphy.gif" class="bear-gif">
     <div id="typeText" class="type-text"></div>
     
-    <div class="love-meter">
-      <p>LOVE METER</p>
-      <div class="meter-bar"><div class="fill"></div></div>
+    <div class="aesthetic-meter">
+        <p>LOVE METER</p>
+        <div class="heart-row">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</div>
     </div>
 
     <div id="countdown-timer">
