@@ -3,10 +3,9 @@ const music = document.getElementById("bgMusic");
 function initApp() {
     document.getElementById('start-overlay').style.display = 'none';
     document.getElementById('main-card').classList.remove('hidden');
-    music.play().catch(e => console.log("Music play blocked"));
+    music.play().catch(() => console.log("Music play blocked"));
 }
 
-// Countdown to Feb 3rd Midnight
 function updateCountdown() {
     const target = new Date("February 3, 2026 00:00:00").getTime();
     const now = new Date().getTime();
@@ -25,7 +24,6 @@ function updateCountdown() {
 }
 setInterval(updateCountdown, 1000);
 
-// No Button Logic
 const noBtn = document.getElementById("noBtn");
 const phrases = ["Really? 😳", "Why though? 🥺", "You sure? 😢", "Pretty please! 💗", "Sadiya ❤️"];
 let i = 0;
@@ -39,12 +37,11 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.innerText = phrases[i++ % phrases.length];
 });
 
-// Yes Button Logic
 document.getElementById("yesBtn").addEventListener("click", () => {
     document.getElementById("main-card").classList.add("hidden");
     document.getElementById("celebration").classList.remove("hidden");
 
-    const fullText = "Yaay! I love you more than words can say.\n\nCounting every heartbeat until our special day... Happy Anniversary, my everything! ❤️";
+    const fullText = "Yaay! I love you more than words can say. \n\nCounting every heartbeat until our special day... Happy Anniversary, my everything! ❤️";
     const el = document.getElementById("typeText");
     let index = 0;
 
