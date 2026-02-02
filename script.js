@@ -1,119 +1,96 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-}
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const music = document.getElementById("bgMusic");
+const hearts = document.querySelector(".hearts");
 
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffe6ee;
-    overflow: hidden;
-}
+let musicStarted = false;
 
-/* Card */
-.container {
-    background: white;
-    padding: 26px 22px 32px;
-    border-radius: 20px;
-    text-align: center;
-    width: 90%;
-    max-width: 380px;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
-    animation: popIn 0.6s ease;
-}
+const phrases = [
+  "Really? 😳",
+  "Think again 🥺",
+  "You sure? 😢",
+  "Pretty please 💗",
+  "Last chance 😏",
+  "Sadiya ❤️"
+];
 
-.hidden {
-    display: none;
-}
-
-.bear-gif {
-    width: 160px;
-    margin-bottom: 18px;
-}
-
-h1 {
-    font-size: 1.4rem;
-    margin-bottom: 22px;
-    color: #333;
-}
-
-.type-text {
-    font-size: 1.15rem;
-    color: #444;
-    line-height: 1.7;
-    white-space: pre-line;
-}
-
-/* Buttons */
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-}
-
-button {
-    padding: 10px 26px;
-    border: none;
-    border-radius: 999px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.25s ease;
-}
-
-#yesBtn {
-    background: #ff5c8a;
-    color: white;
-}
-
-#yesBtn:hover {
-    transform: scale(1.08);
-}
-
-#noBtn {
-    background: #e0e0e0;
-}
-
-/* Animations */
-@keyframes popIn {
-    from { transform: scale(0.85); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
+let i = 0;
 
 /* Floating hearts */
-.hearts {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
+setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = (4 + Math.random() * 4) + "s";
+    hearts.appendChild(h);
+    setTimeout(() => h.remove(), 8000);
+}, 400);
+
+/* Start music safely */
+function startMusic() {
+    if (!musicStarted) {
+        music.play().catch(() => {});
+        musicStarted = true;
+    }
 }
 
-.heart {
-    position: absolute;
-    bottom: -20px;
-    width: 14px;
-    height: 14px;
-    background: rgba(255, 92, 138, 0.25);
-    transform: rotate(45deg);
-    animation: floatUp linear infinite;
+/* Smart No button */
+function moveNo() {
+    startMusic();
+    if (navigator.vibrate) navigator.vibrate(40);
+
+    const yes = yesBtn.getBoundingClientRect();
+    let x, y, ok;
+
+    do {
+        x = Math.random() * (innerWidth - noBtn.offsetWidth);
+        y = Math.random() * (innerHeight - noBtn.offsetHeight);
+
+        ok =
+          x + noBtn.offsetWidth < yes.left - 20 ||
+          x > yes.right + 20 ||
+          y + noBtn.offsetHeight < yes.top - 20 ||
+          y > yes.bottom + 20;
+    } while (!ok);
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    noBtn.innerText = phrases[i++ % phrases.length];
 }
 
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    background: inherit;
-    border-radius: 50%;
-}
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
-.heart::before { top: -7px; }
-.heart::after { left: -7px; }
+/* Celebration */
+function celebrate() {
+    startMusic();
+    if (navigator.vibrate) navigator.vibrate([60, 40, 60]);
 
-@keyframes floatUp {
-    from { transform: translateY(0) rotate(45deg); opacity: 1; }
-    to { transform: translateY(-120vh) rotate(45deg); opacity: 0; }
+    document.getElementById("main-card").classList.add("hidden");
+    document.getElementById("celebration").classList.remove("hidden");
+
+    const lines = [
+      "I didn’t want to rush this…\n\n",
+      "I just wanted to be sure.\n\n",
+      "It’s you. Always. ❤️"
+    ];
+
+    const el = document.getElementById("typeText");
+    el.innerText = "";
+
+    let l = 0, c = 0;
+
+    function type() {
+        if (l >= lines.length) return;
+        if (c < lines[l].length) {
+            el.innerText += lines[l][c++];
+            setTimeout(type, 45);
+        } else {
+            l++; c = 0;
+            setTimeout(type, 700);
+        }
+    }
+
+    setTimeout(type, 600);
 }
