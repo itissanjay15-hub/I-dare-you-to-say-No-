@@ -1,63 +1,59 @@
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
 const music = document.getElementById("bgMusic");
-const hearts = document.querySelector(".hearts");
 
-let musicStarted = false;
-
-function startMusic() {
-  if (!musicStarted) {
-    music.play().catch(() => {});
-    musicStarted = true;
-  }
+function initApp() {
+    document.getElementById('start-overlay').style.display = 'none';
+    document.getElementById('main-card').classList.remove('hidden');
+    music.play();
 }
 
-document.addEventListener("click", startMusic, { once: true });
-document.addEventListener("touchstart", startMusic, { once: true });
+// Countdown Logic
+function updateCountdown() {
+    const target = new Date("February 3, 2026 00:00:00").getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
 
-/* Floating hearts */
-setInterval(() => {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.animationDuration = (4 + Math.random() * 4) + "s";
-  hearts.appendChild(h);
-  setTimeout(() => h.remove(), 8000);
-}, 400);
+    if (diff <= 0) {
+        document.getElementById("timer-display").innerText = "HAPPY ANNIVERSARY! ❤️";
+        return;
+    }
 
-const phrases = ["Really? 😳", "Think again 🥺", "You sure? 😢", "Please? 💗", "Last chance 😏", "Sadiya ❤️"];
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById("timer-display").innerText = `${d}d ${h}h ${m}m ${s}s`;
+}
+
+setInterval(updateCountdown, 1000);
+
+// "No" Button Teleportation
+const noBtn = document.getElementById("noBtn");
+const phrases = ["Really? 😳", "Think again 🥺", "You sure? 😢", "Sadiya, please! ❤️"];
 let i = 0;
 
-function moveNo() {
-  startMusic();
-  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-  noBtn.style.position = "fixed";
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-  noBtn.innerText = phrases[i++ % phrases.length];
-}
+noBtn.addEventListener("mouseenter", () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    noBtn.innerText = phrases[i++ % phrases.length];
+});
 
-noBtn.addEventListener("mouseenter", moveNo);
+// "Yes" Button Celebration
+document.getElementById("yesBtn").addEventListener("click", () => {
+    document.getElementById("main-card").classList.add("hidden");
+    document.getElementById("celebration").classList.remove("hidden");
 
-yesBtn.addEventListener("click", () => {
-  startMusic();
-  document.getElementById("main-card").classList.add("hidden");
-  document.getElementById("celebration").classList.remove("hidden");
+    const fullText = "Yaay! I’m so lucky to have you. ❤️\n\nHappy Anniversary, Sadiya! I'm counting down every second until our special day.";
+    const el = document.getElementById("typeText");
+    let index = 0;
 
-  // Improved romantic line
-  const fullText = "Yaay! I’m counting down the seconds until our special day...\n\nI am the luckiest person alive to have you by my side. ❤️";
-  
-  const el = document.getElementById("typeText");
-  el.innerText = "";
-  let index = 0;
-
-  function type() {
-    if (index < fullText.length) {
-      el.innerText += fullText.charAt(index);
-      index++;
-      setTimeout(type, 60);
+    function type() {
+        if (index < fullText.length) {
+            el.innerText += fullText.charAt(index++);
+            setTimeout(type, 60);
+        }
     }
-  }
-  setTimeout(type, 500);
+    type();
 });
