@@ -5,7 +5,6 @@ const hearts = document.querySelector(".hearts");
 
 let musicStarted = false;
 
-/* Start music on first interaction (browser-safe) */
 function startMusic() {
   if (!musicStarted) {
     music.play().catch(() => {});
@@ -16,7 +15,7 @@ function startMusic() {
 document.addEventListener("click", startMusic, { once: true });
 document.addEventListener("touchstart", startMusic, { once: true });
 
-/* Floating hearts */
+/* Floating hearts background */
 setInterval(() => {
   const h = document.createElement("div");
   h.className = "heart";
@@ -26,7 +25,6 @@ setInterval(() => {
   setTimeout(() => h.remove(), 8000);
 }, 400);
 
-/* No button logic */
 const phrases = [
   "Really? 😳",
   "Think again 🥺",
@@ -39,19 +37,9 @@ const phrases = [
 let i = 0;
 
 function moveNo() {
-  const yesRect = yesBtn.getBoundingClientRect();
-  let x, y, safe;
-
-  do {
-    x = Math.random() * (innerWidth - noBtn.offsetWidth);
-    y = Math.random() * (innerHeight - noBtn.offsetHeight);
-
-    safe =
-      x + noBtn.offsetWidth < yesRect.left - 20 ||
-      x > yesRect.right + 20 ||
-      y + noBtn.offsetHeight < yesRect.top - 20 ||
-      y > yesRect.bottom + 20;
-  } while (!safe);
+  startMusic(); // Starts Cupid as soon as she tries to click No
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
   noBtn.style.position = "fixed";
   noBtn.style.left = x + "px";
@@ -62,33 +50,34 @@ function moveNo() {
 noBtn.addEventListener("mouseenter", moveNo);
 noBtn.addEventListener("touchstart", moveNo);
 
-/* Yes button */
+/* Yes button logic with fixed spacing */
 yesBtn.addEventListener("click", () => {
   document.getElementById("main-card").classList.add("hidden");
   document.getElementById("celebration").classList.remove("hidden");
 
+  // Added extra line breaks for better spacing
   const lines = [
-    "I didn’t want to rush this...\n\n",
-    "I just wanted to be sure.\n\n",
+    "I didn’t want to rush this...",
+    "\n\n", 
+    "I just wanted to be sure.",
+    "\n\n",
     "It’s you. Always. ❤️"
   ];
 
   const el = document.getElementById("typeText");
   el.innerText = "";
-
   let line = 0, char = 0;
 
   function type() {
     if (line >= lines.length) return;
     if (char < lines[line].length) {
       el.innerText += lines[line][char++];
-      setTimeout(type, 45);
+      setTimeout(type, 50);
     } else {
       line++;
       char = 0;
-      setTimeout(type, 700);
+      setTimeout(type, 500);
     }
   }
-
   setTimeout(type, 600);
 });
