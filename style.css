@@ -1,16 +1,20 @@
-body { background: #ffe6ee; font-family: 'Poppins', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
-.container { background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 90%; max-width: 400px; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+body { background: #ffe6ee; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+.container { background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 90%; max-width: 400px; position: relative; }
 .hidden { display: none; }
-.bear-gif { width: 150px; margin-bottom: 15px; }
+.bear-gif { width: 160px; margin-bottom: 15px; }
+h1 { font-size: 1.4rem; color: #d81b60; margin-bottom: 20px; }
+.type-text { font-size: 1.1rem; color: #444; line-height: 1.5; margin-bottom: 20px; }
 
-/* Love Meter */
-.meter-bar { background: #eee; border-radius: 10px; height: 20px; width: 100%; margin: 10px 0; overflow: hidden; }
-.fill { background: #ff4081; height: 100%; width: 0%; animation: fillUp 3s forwards; }
+/* Love Meter Styles */
+.meter-bar { background: #f0f0f0; border-radius: 10px; height: 20px; width: 100%; margin: 10px 0; overflow: hidden; border: 1px solid #ffccd5; }
+.fill { background: linear-gradient(to right, #ff80ab, #ff4081); height: 100%; width: 0%; animation: fillUp 4s forwards ease-in-out; }
 @keyframes fillUp { to { width: 100%; } }
 
-/* Countdown */
-#timer-display { font-weight: bold; font-size: 1.2rem; color: #d81b60; margin-top: 5px; }
+/* Timer Display */
+#timer-display { font-weight: 600; font-size: 1.3rem; color: #d81b60; background: #fff0f3; padding: 10px; border-radius: 10px; display: inline-block; margin-top: 5px; }
 
-/* Start Overlay */
-#start-overlay { position: fixed; inset: 0; background: white; z-index: 100; display: flex; justify-content: center; align-items: center; }
-#start-overlay button { padding: 20px 40px; font-size: 1.2rem; background: #ff4081; color: white; border: none; border-radius: 50px; cursor: pointer; }
+/* Required Overlay for Music */
+#start-overlay { position: fixed; inset: 0; background: #ffe6ee; z-index: 1000; display: flex; justify-content: center; align-items: center; }
+#start-overlay button { padding: 20px 40px; font-size: 1.2rem; background: #ff4081; color: white; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4); transition: 0.3s; }
+#start-overlay button:hover { transform: scale(1.1); background: #f50057; }
