@@ -104,23 +104,52 @@ function updateCountdown() {
 }
 setInterval(updateCountdown, 1000);
 
-// No Button - Changes text and teleports
+// No Button - FIXED FOR MOBILE CONSECUTIVE TOUCHES
 const noBtn = document.getElementById("noBtn");
+let canMove = true;
 
-noBtn.addEventListener("click", () => {
-    noPhraseIndex = (noPhraseIndex + 1) % noButtonPhrases.length;
-    noBtn.innerText = noButtonPhrases[noPhraseIndex];
-});
-
-noBtn.addEventListener("mouseover", () => {
-    // Change text on hover too
+function moveNoButton(e) {
+    if (!canMove) return;
+    
+    // Prevent default to stop any scrolling or zooming
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    
+    // Change text
     noPhraseIndex = (noPhraseIndex + 1) % noButtonPhrases.length;
     noBtn.innerText = noButtonPhrases[noPhraseIndex];
     
-    // Teleport the button
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+    // Get button dimensions
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+    
+    // Calculate safe boundaries (with padding)
+    const maxX = window.innerWidth - btnWidth - 20;
+    const maxY = window.innerHeight - btnHeight - 20;
+    
+    // Generate random position
+    const x = Math.max(10, Math.random() * maxX);
+    const y = Math.max(10, Math.random() * maxY);
+    
+    // Apply position
     noBtn.style.position = "fixed";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
-});
+    
+    // Brief delay to allow repositioning, then allow next move
+    canMove = false;
+    setTimeout(() => {
+        canMove = true;
+    }, 100);
+}
+
+// Desktop - mouseover
+noBtn.addEventListener("mouseover", moveNoButton);
+
+// Mobile - touchstart (this handles taps)
+noBtn.addEventListener("touchstart", moveNoButton, { passive: false });
+
+// Also handle click as backup
+noBtn.addEventListener("click", moveNoButton);
