@@ -90,7 +90,7 @@ body {
 }
 
 .bear-gif { 
-    width: 180px; 
+    width: 200px; 
     max-width: 90%;
     height: auto; 
     margin-bottom: 20px; 
@@ -219,7 +219,7 @@ h1 {
     }
     
     .bear-gif {
-        width: 150px;
+        width: 160px;
     }
     
     .type-text {
@@ -266,6 +266,6 @@ h1 {
     }
     
     .bear-gif {
-        width: 130px;
+        width: 140px;
     }
 }
