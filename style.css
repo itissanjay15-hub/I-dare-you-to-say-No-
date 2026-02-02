@@ -6,7 +6,7 @@ body { background: #FCE4EC; display: flex; justify-content: center; align-items:
 
 .hidden { display: none; }
 
-.bear-gif { width: 160px; margin-bottom: 20px; border-radius: 15px; }
+.bear-gif { width: 180px; height: auto; margin-bottom: 20px; border-radius: 15px; }
 
 h1 { color: #F06292; font-size: 1.4rem; margin-bottom: 25px; }
 
@@ -25,5 +25,8 @@ h1 { color: #F06292; font-size: 1.4rem; margin-bottom: 25px; }
 
 #timer-display { background: #F8BBD0; color: #D81B60; padding: 10px 20px; border-radius: 15px; margin-top: 10px; display: inline-block; font-size: 1.3rem; }
 
+#countdown-timer { margin-top: 20px; color: #F06292; }
+
 #start-overlay { position: fixed; inset: 0; background: #FCE4EC; z-index: 1000; display: flex; justify-content: center; align-items: center; }
-#start-overlay button { padding: 20px 40px; font-size: 1.3rem; background: #F8BBD0; color: #D81B60; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+#start-overlay button { padding: 20px 40px; font-size: 1.3rem; background: #F8BBD0; color: #D81B60; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+#start-overlay button:hover { transform: scale(1.05); background-color: #F48FB1; }
