@@ -7,15 +7,16 @@ let musicStarted = false;
 
 function startMusic() {
   if (!musicStarted) {
-    music.play().catch(() => {});
+    music.play().catch(e => console.log("Audio play failed:", e));
     musicStarted = true;
   }
 }
 
-// Start music on first click anywhere
+// Triggers music on the very first interaction
 document.addEventListener("click", startMusic, { once: true });
+document.addEventListener("touchstart", startMusic, { once: true });
 
-/* Floating hearts */
+/* Floating hearts background animation */
 setInterval(() => {
   const h = document.createElement("div");
   h.className = "heart";
@@ -25,22 +26,14 @@ setInterval(() => {
   setTimeout(() => h.remove(), 8000);
 }, 400);
 
-const phrases = [
-  "Really? 😳",
-  "Think again 🥺",
-  "You sure? 😢",
-  "Please? 💗",
-  "Last chance 😏",
-  "Sadiya ❤️"
-];
-
+/* No button teleportation and quirky text */
+const phrases = ["Really? 😳", "Think again 🥺", "You sure? 😢", "Please? 💗", "Last chance 😏", "Sadiya ❤️"];
 let i = 0;
 
 function moveNo() {
-  startMusic(); 
+  startMusic();
   const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
   const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-
   noBtn.style.position = "fixed";
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
@@ -48,26 +41,25 @@ function moveNo() {
 }
 
 noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
-/* Yes button logic with fixed word spacing */
+/* Yes button click: switches to celebration bear couple */
 yesBtn.addEventListener("click", () => {
+  startMusic();
   document.getElementById("main-card").classList.add("hidden");
   document.getElementById("celebration").classList.remove("hidden");
 
-  // One long string ensures the spaces between words are handled correctly
   const fullText = "I didn’t want to rush this...\n\nI just wanted to be sure.\n\nIt’s you. Always. ❤️";
   const el = document.getElementById("typeText");
   el.innerText = "";
-  
   let index = 0;
 
   function type() {
     if (index < fullText.length) {
       el.innerText += fullText.charAt(index);
       index++;
-      setTimeout(type, 60); 
+      setTimeout(type, 60); // Standard speed for natural reading
     }
   }
-
   setTimeout(type, 500);
 });
