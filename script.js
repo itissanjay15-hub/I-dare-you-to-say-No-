@@ -7,16 +7,15 @@ let musicStarted = false;
 
 function startMusic() {
   if (!musicStarted) {
-    music.play().catch(e => console.log("Audio play failed:", e));
+    music.play().catch(() => {});
     musicStarted = true;
   }
 }
 
-// Triggers music on the very first interaction
 document.addEventListener("click", startMusic, { once: true });
 document.addEventListener("touchstart", startMusic, { once: true });
 
-/* Floating hearts background animation */
+/* Floating hearts */
 setInterval(() => {
   const h = document.createElement("div");
   h.className = "heart";
@@ -26,7 +25,6 @@ setInterval(() => {
   setTimeout(() => h.remove(), 8000);
 }, 400);
 
-/* No button teleportation and quirky text */
 const phrases = ["Really? 😳", "Think again 🥺", "You sure? 😢", "Please? 💗", "Last chance 😏", "Sadiya ❤️"];
 let i = 0;
 
@@ -41,15 +39,15 @@ function moveNo() {
 }
 
 noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
 
-/* Yes button click: switches to celebration bear couple */
 yesBtn.addEventListener("click", () => {
   startMusic();
   document.getElementById("main-card").classList.add("hidden");
   document.getElementById("celebration").classList.remove("hidden");
 
-  const fullText = "I didn’t want to rush this...\n\nI just wanted to be sure.\n\nIt’s you. Always. ❤️";
+  // Improved romantic line
+  const fullText = "Yaay! I’m counting down the seconds until our special day...\n\nI am the luckiest person alive to have you by my side. ❤️";
+  
   const el = document.getElementById("typeText");
   el.innerText = "";
   let index = 0;
@@ -58,7 +56,7 @@ yesBtn.addEventListener("click", () => {
     if (index < fullText.length) {
       el.innerText += fullText.charAt(index);
       index++;
-      setTimeout(type, 60); // Standard speed for natural reading
+      setTimeout(type, 60);
     }
   }
   setTimeout(type, 500);
