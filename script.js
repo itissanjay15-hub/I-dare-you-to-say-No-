@@ -20,7 +20,7 @@ function initApp() {
     document.getElementById('main-card').classList.remove('hidden');
     
     // Play music with user interaction
-    music.volume = 0.6; // Set volume to 60%
+    music.volume = 0.5; // Set volume to 50%
     music.play().catch(error => {
         console.log("Audio play failed:", error);
         // Try again on first click
