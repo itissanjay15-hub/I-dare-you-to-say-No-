@@ -1,20 +1,42 @@
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-body { background: #ffe6ee; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
-.container { background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 90%; max-width: 400px; position: relative; }
-.hidden { display: none; }
-.bear-gif { width: 160px; margin-bottom: 15px; }
-h1 { font-size: 1.4rem; color: #d81b60; margin-bottom: 20px; }
-.type-text { font-size: 1.1rem; color: #444; line-height: 1.5; margin-bottom: 20px; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; font-weight: bold; }
 
-/* Love Meter Styles */
-.meter-bar { background: #f0f0f0; border-radius: 10px; height: 20px; width: 100%; margin: 10px 0; overflow: hidden; border: 1px solid #ffccd5; }
-.fill { background: linear-gradient(to right, #ff80ab, #ff4081); height: 100%; width: 0%; animation: fillUp 4s forwards ease-in-out; }
+body { background: #ffe6ee; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+
+.container { background: white; padding: 40px; border-radius: 30px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.1); width: 90%; max-width: 450px; }
+
+/* Buttons: Baby Pink, Bigger, and Equal Size */
+.btn-main {
+    background-color: #f8bbd0; /* Baby Pink */
+    color: #ad1457;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.4rem;
+    border-radius: 20px;
+    cursor: pointer;
+    min-width: 150px;
+    transition: 0.3s;
+}
+
+#yesBtn:hover { transform: scale(1.1); background-color: #f48fb1; }
+
+/* Second Page Themes */
+.celebration-theme { background: #ad1457 !important; } /* Contrast Dark Pink Background */
+
+.celebration-theme .type-text {
+    color: #f8bbd0 !important; /* Baby Pink Bold Text */
+    font-size: 1.3rem;
+    white-space: pre-wrap;
+    margin: 20px 0;
+}
+
+.celebration-theme h1, .celebration-theme p { color: #f8bbd0; }
+
+.love-meter { margin-top: 20px; }
+.meter-bar { background: #fce4ec; border-radius: 10px; height: 25px; width: 100%; border: 2px solid #f8bbd0; overflow: hidden; }
+.fill { background: #f8bbd0; height: 100%; width: 0%; animation: fillUp 4s forwards; }
 @keyframes fillUp { to { width: 100%; } }
 
-/* Timer Display */
-#timer-display { font-weight: 600; font-size: 1.3rem; color: #d81b60; background: #fff0f3; padding: 10px; border-radius: 10px; display: inline-block; margin-top: 5px; }
+#timer-display { background: #f8bbd0; color: #ad1457; padding: 10px; border-radius: 10px; margin-top: 10px; display: inline-block; }
 
-/* Required Overlay for Music */
 #start-overlay { position: fixed; inset: 0; background: #ffe6ee; z-index: 1000; display: flex; justify-content: center; align-items: center; }
-#start-overlay button { padding: 20px 40px; font-size: 1.2rem; background: #ff4081; color: white; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4); transition: 0.3s; }
-#start-overlay button:hover { transform: scale(1.1); background: #f50057; }
+#start-overlay button { padding: 25px 50px; font-size: 1.5rem; background: #f8bbd0; color: #ad1457; border: none; border-radius: 50px; cursor: pointer; }
