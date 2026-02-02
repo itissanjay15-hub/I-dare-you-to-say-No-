@@ -8,31 +8,40 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <!-- Flying Hearts Background -->
-  <div class="hearts-container">
-    <div class="heart">❤️</div>
-    <div class="heart">💕</div>
-    <div class="heart">💖</div>
-    <div class="heart">💗</div>
-    <div class="heart">💓</div>
-    <div class="heart">❤️</div>
-    <div class="heart">💕</div>
-    <div class="heart">💖</div>
-    <div class="heart">💗</div>
-    <div class="heart">💓</div>
-    <div class="heart">❤️</div>
-    <div class="heart">💕</div>
-    <div class="heart">💖</div>
-    <div class="heart">💗</div>
-    <div class="heart">💓</div>
-  </div>
-
   <div id="start-overlay">
     <button onclick="initApp()">Open Sadiya's Gift 🎁</button>
   </div>
+
+  <div class="hearts"></div>
   
   <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/audio/2024/08/06/audio_00d461d58c.mp3" type="audio/mpeg">
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
   </audio>
 
-  <div id="main-card" class="contai
+  <div id="main-card" class="container hidden">
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTBxdHR5Ym5jNHV5YnFocDB4azZxdXd0dGRqaGF5NWttY3Q3YWNvMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" class="bear-gif" alt="Cute bears">
+    <h1>Sadiya, will you be my Valentine? 💕</h1>
+    <div class="buttons">
+      <button id="yesBtn" class="btn-main" onclick="celebrate()">Yes 💖</button>
+      <button id="noBtn" class="btn-main">No 🙈</button>
+    </div>
+  </div>
+
+  <div id="celebration-page" class="container hidden page-two">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGw3aDgyczlwZGN1eXpidHhxbWQ4NXpvcjRxeWVrMHd5cnlydHpuNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L2z7dnOduqEow/giphy.gif" class="bear-gif" alt="Celebrating bears">
+    <div id="typeText" class="type-text"></div>
+    
+    <div class="aesthetic-meter">
+        <p>LOVE METER</p>
+        <div class="heart-row">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</div>
+    </div>
+
+    <div id="countdown-timer">
+      <p>Anniversary Countdown:</p>
+      <div id="timer-display">Calculating...</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
