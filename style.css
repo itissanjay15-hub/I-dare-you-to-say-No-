@@ -6,7 +6,7 @@ body { min-height: 100vh; background: #ffe6ee; display: flex; justify-content: c
 
 .hidden { display: none; }
 
-.bear-gif { width: 180px; margin-bottom: 20px; border-radius: 10px; }
+.bear-gif { width: 180px; margin-bottom: 20px; }
 
 h1 { font-size: 1.5rem; margin-bottom: 25px; color: #d81b60; }
 
@@ -14,13 +14,16 @@ h1 { font-size: 1.5rem; margin-bottom: 25px; color: #d81b60; }
 
 .buttons { display: flex; justify-content: center; align-items: center; gap: 20px; }
 
-#yesBtn { background: #ff4081; color: #fff; padding: 15px 35px; border-radius: 15px; font-size: 1.2rem; border: none; cursor: pointer; transition: transform 0.2s; }
-
-#yesBtn:hover { transform: scale(1.1); }
+#yesBtn { background: #ff4081; color: #fff; padding: 15px 35px; border-radius: 15px; font-size: 1.2rem; border: none; cursor: pointer; animation: pulse 1.5s infinite; }
 
 #noBtn { background: #fce4ec; color: #ad1457; padding: 8px 18px; border-radius: 10px; border: 1px solid #f8bbd0; cursor: pointer; }
 
-/* Floating hearts animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 .heart { position: absolute; bottom: -20px; width: 14px; height: 14px; background: rgba(255, 64, 129, 0.3); transform: rotate(45deg); animation: floatUp linear infinite; }
 .heart::before, .heart::after { content: ""; position: absolute; width: 14px; height: 14px; background: inherit; border-radius: 50%; }
 .heart::before { top: -7px; }
